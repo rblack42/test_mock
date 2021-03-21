@@ -1,29 +1,23 @@
-import tkinter as tk
+from tkinter import Tk
 
 class Gui:
 
     WIDTH = 212
     HEIGHT = 104
 
-    def __init__(self, root):
-        self.root = root
+    def __init__(self):
+        self.root = Tk()
         self.root.title("mmdesigner")
         self.root.geometry('{}x{}'.format(self.WIDTH, self.HEIGHT))
-        self.protocol("WM_DELETE_WINDOW", self.close)
+        self.root.protocol("WM_DELETE_WINDOW", self.close)
         print("gui initialized")
-
-    def create_gui(self):
-
-    def close(self):
-        self.root.destroy()
-
-def create_gui():
-    root = tk.Tk()
-    root.protocol("WM_DELETE_WINDOW", close
-    def run(self):
         self.root.mainloop()
 
+    def close(self):
+        print("gui terminated")
+        self.root.destroy()
+
+
 if __name__ == '__main__':
-    gui = Gui()
-    gui.run()
+    Gui()
 
