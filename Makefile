@@ -14,7 +14,7 @@ test:
 
 .PHONY: run
 run:
-	python gui.py
+	python -m mmdesigner
 
 .PHONY: nb
 nb:
