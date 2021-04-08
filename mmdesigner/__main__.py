@@ -1,10 +1,13 @@
-from mmdesigner.gui import Gui
+import tkinter as tk
+from . gui import Gui
 
 
-def main():
-    Gui()
+def main(root):
+    gui = Gui(root)
+    gui.run()
 
 
-# python -m math_magik
+# python -m mmdesigner
 if __name__ == '__main__':
-    main()
+    root = tk.Tk()
+    main(root)

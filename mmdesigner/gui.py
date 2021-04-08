@@ -1,23 +1,90 @@
-from tkinter import Tk
+import tkinter as tk
+from tkinter import filedialog as fd
+from tkinter import Menu
+from PIL import ImageTk
+from tkinter.messagebox import showinfo
 
-class Gui:
 
-    WIDTH = 212
-    HEIGHT = 104
+def donothing():
+    print("nothing")
 
-    def __init__(self):
-        self.root = Tk()
+def selectfile():
+    filetypes = (
+        ('scad files', '*.scad'),
+        ('all files', '*.*')
+    )
+    filename = fd.askopenfilenames(
+        title='Open file',
+        initialdir = '~/',
+        filetypes=filetypes
+    )
+
+    showinfo(
+        title='Selected file',
+        message=filename
+    )
+
+
+def selectdir():
+    dirpath = fd.askdirectory(
+            title="Select project directory",
+            initialdir='~/',
+    )
+    showinfo(
+            title='selected directory',
+            message=dirpath
+    )
+class Gui():
+
+    def __init__(self, root):
+        self.root = root
+        self.frame = tk.Frame(self.root)
         self.root.title("mmdesigner")
-        self.root.geometry('{}x{}'.format(self.WIDTH, self.HEIGHT))
-        self.root.protocol("WM_DELETE_WINDOW", self.close)
-        print("gui initialized")
+        self.root.withdraw()
+        self.root.geometry("600x400")
+        self.root.protocol("WM_DELETE_WINDOW", self.quit)
+        self.configure()
+
+    def run(self):
+        print("mmdesigner starting...")
         self.root.mainloop()
 
-    def close(self):
-        print("gui terminated")
+    def quit(self):
+        print("mmdesigner terminating")
         self.root.destroy()
 
+    def configure(self):
+        # set application icon
+        iconphoto = "mmdesigner/lpp.png"
+        photo = ImageTk.PhotoImage(file=iconphoto)
+        self.root.iconphoto(False, photo)
 
-if __name__ == '__main__':
-    Gui()
+        # create manubar
+        menubar = Menu(self.root)
+        self.root.config(menu=menubar)
+
+        # add file menu
+        filemenu = tk.Menu(menubar, tearoff=0)
+
+        filemenu.add_command(label="New", command=selectdir)
+        filemenu.add_command(label="Open", command=selectfile)
+        filemenu.add_command(label="Close", command=donothing)
+        filemenu.add_separator()
+        filemenu.add_command(label="Exit", command=self.quit)
+        menubar.add_cascade(
+                label="File",
+                menu=filemenu
+        )
+
+        # add help menu
+        helpmenu = Menu(menubar, tearoff=0)
+        helpmenu.add_command(label='Welcome')
+        helpmenu.add_command(label='About...')
+
+        # add the Help menu to the menubar
+        menubar.add_cascade(
+            label="Help",
+            menu=helpmenu
+        )
+        self.root.deiconify()
 

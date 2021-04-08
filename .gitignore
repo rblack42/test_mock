@@ -9,5 +9,4 @@
 *.py[cod]
 __pycache__
 .direnv
-.ipytnbn_checkpoints
-
+.pytest_cache
