@@ -9,4 +9,8 @@
 *.py[cod]
 __pycache__
 .direnv
+venv
 .pytest_cache
+.ipynb_checkpoints
+.idea
+

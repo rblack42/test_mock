@@ -1,5 +1,5 @@
-import tkinter as tk
-from . gui import Gui
+from mmdesigner.view import get_tkinter_root
+from . Gui import Gui
 
 
 def main(root):
@@ -9,5 +9,5 @@ def main(root):
 
 # python -m mmdesigner
 if __name__ == '__main__':
-    root = tk.Tk()
+    root = get_tkinter_root()
     main(root)

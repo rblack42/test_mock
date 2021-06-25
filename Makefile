@@ -10,7 +10,7 @@ reqs:
 
 .PHONY: test
 test:
-	python -m pytest -vvv
+	python -m pytest -vvv tests
 
 .PHONY: run
 run:
