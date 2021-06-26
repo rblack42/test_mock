@@ -1,5 +1,6 @@
 import pytest
 
+
 @pytest.fixture
 def mocked_tk(mocker):
     mocked_tk = mocker.patch('mmdesigner.view.tk.Tk')
@@ -19,3 +20,13 @@ def mocked_tk_geometry(mocker):
 def mocked_tk_mainloop(mocker):
     mocked_tk_mainloop = mocker.patch('mmdesigner.view.tk.Tk.mainloop')
     return mocked_tk_mainloop
+
+@pytest.fixture
+def mocked_tk_protocol(mocker):
+    mocked_tk_protocol = mocker.patch('mmdesigner.view.tk.Tk.protocol')
+    return mocked_tk_protocol
+
+@pytest.fixture
+def mocked_tk_destroy(mocker):
+    mocked_tk_destroy = mocker.patch('mmdesigner.view.tk.Tk.destroy')
+    return mocked_tk_destroy
