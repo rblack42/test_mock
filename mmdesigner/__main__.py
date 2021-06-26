@@ -3,7 +3,7 @@ from . Gui import Gui
 
 
 def main(root):
-    gui = Gui(root)
+    gui = Gui(root,500,400)
     gui.run()
 
 
